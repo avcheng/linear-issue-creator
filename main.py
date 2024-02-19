@@ -61,7 +61,6 @@ def check_new_issue_against_existing(script_args):
         new_issue_prompt += f"Issue id: {issue['id']}\n" + f"Issue title: {issue['title']}\n" +  f"Issue description: {issue['title']}\n\n"
 
     new_issue_prompt += "This is the new issue: \n\n" + f"Issue title: {script_args['name']}\n" + f"Issue description: {script_args['description']}\n\n"
-    print(new_issue_prompt)
 
     linear_comparison_thread = client.beta.threads.create()
     linear_comparison_thread_id = linear_comparison_thread.id

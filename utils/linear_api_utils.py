@@ -69,6 +69,17 @@ def retrieve_linear_issue_label_id(name):
 
 
 def create_linear_issue(name, description, label_id):
+    """
+    Creates a new issue in Linear.
+    
+    Args:
+    - name: The title of the issue.
+    - description: The description of the issue.
+    - label_id: The ID of the label to associate with the issue.
+    
+    Returns:
+    - issue_id: The ID of the created issue. If the issue was not created, returns None.
+    """
     body = """
     mutation IssueCreate {
         issueCreate(
@@ -95,6 +106,15 @@ def create_linear_issue(name, description, label_id):
 
 
 def add_comment_to_linear_issue(issue_id, comment):
+    """
+    Adds a comment to an existing issue in Linear.
+
+    Args:
+    - issue_id: The ID of the issue to add a comment to.
+
+    Returns:
+    - success: True if the comment was added successfully, False otherwise.
+    """
     body = """
     mutation CommentCreate {
         CommentCreate(
@@ -115,6 +135,12 @@ def add_comment_to_linear_issue(issue_id, comment):
     
 
 def get_all_active_issues():
+    """
+    Retrieves all active issues in Linear under a specific team id.
+
+    Returns:
+    - issues: A list of all active issues in Linear under the specified team id.
+    """
     body = """
     query Issues {
         issues(
